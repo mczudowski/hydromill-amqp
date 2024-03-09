@@ -7,6 +7,19 @@
 
 AMQP Pub/Sub for the Hydromill project. This project is a direct port of [Watermill AMQP Pub/Sub](https://github.com/ThreeDotsLabs/watermill-amqp).
 
+## Usage
+
+Example publisher:
+```py
+amqp_uri = "amqp://guest:guest@localhost:5672/"
+amqp_config = await new_durable_pubsub_config(amqp_uri)
+
+publisher = await new_publisher(amqp_config)
+
+message = Message(payload=b"simple")
+await publisher.publish("topic", messages=[message])
+```
+
 ## References
 
 [Watermill AMQP Pub/Sub](https://github.com/ThreeDotsLabs/watermill-amqp)

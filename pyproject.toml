@@ -1,9 +1,12 @@
+[tool.coverage.report]
+fail_under = 95
+
 [tool.isort]
 profile = "black"
 
 [tool.poetry]
 name = "hydromill-amqp"
-version = "0.1.0"
+version = "0.1a9"
 description = "AMQP Pub/Sub for the Hydromill project. This project is a direct port of https://github.com/ThreeDotsLabs/watermill-amqp."
 license = "MIT"
 authors = ["Marek Czudowski <marek.czudowski@pm.me>"]
@@ -12,8 +15,26 @@ repository = "https://github.com/mczudowski/hydromill-amqp"
 
 [tool.poetry.dependencies]
 python = "^3.8"
+aio-pika = "*"
+elastic-apm = { version = "*", optional = true }
+hydromill = "*"
 
+[tool.poetry.group.test.dependencies]
+flake8-pytest-style = "^1.7.2"
+mock = "^5.1.0"
+pytest = "^8.1.1"
+pytest-asyncio = "^0.23.5.post1"
+pytest-cov = "^4.1.0"
+pytest-mock = "^3.12.0"
+
+[tool.poetry.extras]
+elasticapm = ["elastic-apm"]
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "--cov=hydromill_amqp"
+asyncio_mode = "auto"
+mock_use_standalone_module = true
