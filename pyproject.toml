@@ -1,0 +1,19 @@
+[tool.isort]
+profile = "black"
+
+[tool.poetry]
+name = "hydromill-amqp"
+version = "0.1.0"
+description = "AMQP Pub/Sub for the Hydromill project. This project is a direct port of https://github.com/ThreeDotsLabs/watermill-amqp."
+license = "MIT"
+authors = ["Marek Czudowski <marek.czudowski@pm.me>"]
+readme = "README.md"
+repository = "https://github.com/mczudowski/hydromill-amqp"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
